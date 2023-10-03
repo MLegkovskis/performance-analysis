@@ -1,19 +1,21 @@
-performance-analysis
-====================
+### Резюме и Ответы:
 
-[![Build Status](https://travis-ci.org/jolynch/performance-analysis.svg?branch=master)](https://travis-ci.org/jolynch/performance-analysis)
+1. **Какие настройки LB имеют наименьший latency по 95 перцентилю?**
 
-My collection of various ipython notebooks and useful command line scripts for
-analyzing performance of all kinds of services and code. I also try to include
-useful tools for building or using other tools.
+   **Ответ:** Настройка LB `weighted-choice-8` имеет наименьшую задержку на 95-м процентиле.
+   
+   **Обоснование:** 
+   - Извлеченная информация из блокнота `load_balancing_analysis.ipynb` предоставила четкое сравнение различных настроек LB с точки зрения их задержек на различных процентилях.
+   - Следующий вывод был извлечен из блокнота:
+     ```
+     Strategy             |    mean |     var |     p50 |     p95 |     p99 |   p99.9 
+     ---------------------------------------------------------------------------------
+     weighted-choice-8    |     1.1 |    33.3 |     0.3 |     2.1 |    18.5 |    66.7 |
+     ```
+     Этот вывод показывает задержку в мс на различных процентилях (p50, p95, p99, p99.9) для различных стратегий LB. На 95-м процентиле (`p95`) стратегия `weighted-choice-8` показывает задержку `2.1` мс, которая является наименьшей среди предоставленных стратегий.
 
-Note that this is not a python package you can install. All the scripts
-strive to have as minimal dependencies as possible, and when they do have
-dependencies they will list them in a per script `requirements.txt` file.
+2. **Какая очередь наиболее эффективна по 95 перцентилю?**
 
-Getting Started
-===============
-
-To get started check out the following directories:
-* [Notebooks](notebooks/README.md)
-* [CLI scripts](cli/README.md)
+   **Ответ:** Note sure...
+   
+   **Обоснование:**
